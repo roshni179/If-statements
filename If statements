@@ -1,0 +1,8 @@
+Console.Write("Enter a angle (0 - 360): ");
+        string input = Console.Readine();
+        
+        
+        if (angle >= 315 || angle < 45) return "North";
+        else if (angle >= 45 && angle < 135) return "East";
+        else if (angle >= 135 && angle < 225) return "South";
+        else return "West";
