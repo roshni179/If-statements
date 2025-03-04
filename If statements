@@ -1,8 +1,31 @@
-Console.Write("Enter a angle (0 - 360): ");
-        string input = Console.Readine();
+ Console.Write("Enter the number of minutes parked: ");
+        string input = Console.ReadLine();
         
-        
-        if (angle >= 315 || angle < 45) return "North";
-        else if (angle >= 45 && angle < 135) return "East";
-        else if (angle >= 135 && angle < 225) return "South";
-        else return "West";
+        if (int.TryParse(input, out int minutes) && minutes > 0)
+        {
+            int hours = minutes / 60;
+            if (minutes % 60 != 0)
+            {
+                hours += 1; // Round up to the next hour
+            }
+
+            double cost;
+            if (hours == 1)
+            {
+                cost = 4.0;
+            }
+            else if (hours >= 10)
+            {
+                cost = 20.0;
+            }
+            else
+            {
+                cost = 4.0 + (hours - 1) * 2.0;
+            }
+            
+            Console.WriteLine($"You are being charged for {hours} hours.");
+            Console.WriteLine($"Total cost: ${cost}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please enter a positive numeric value.");
